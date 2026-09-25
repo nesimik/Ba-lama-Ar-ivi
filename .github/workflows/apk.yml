@@ -1,0 +1,43 @@
+name: APK Oluştur
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  derle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Proje repo kökünde de olsa bir alt klasörde de olsa bulunur.
+      # Repoda projenin iki kopyası varsa durur (yanlış kopyayı derlememek için).
+      - name: Proje klasörünü bul
+        id: bul
+        run: |
+          mapfile -t BULUNAN < <(find . -name gradlew -not -path "./.git/*")
+          if [ ${#BULUNAN[@]} -eq 0 ]; then echo "::error::gradlew bulunamadı. Proje dosyaları yüklenmemiş."; exit 1; fi
+          if [ ${#BULUNAN[@]} -gt 1 ]; then echo "::error::Repoda projenin birden fazla kopyası var: ${BULUNAN[*]} — fazlalığı sil."; exit 1; fi
+          DIR=$(dirname "${BULUNAN[0]}")
+          echo "Proje klasörü: $DIR"
+          echo "dir=$DIR" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: APK derle
+        working-directory: ${{ steps.bul.outputs.dir }}
+        run: |
+          chmod +x ./gradlew
+          ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: APK'yı yükle
+        uses: actions/upload-artifact@v4
+        with:
+          name: BaglamaArsivim-apk
+          path: ${{ steps.bul.outputs.dir }}/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
