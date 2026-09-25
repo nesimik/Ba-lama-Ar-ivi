@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Çapraz duran stilize bir bağlama: tekne, sap, burgu kutusu, ses deliği ve teller -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <group android:pivotX="54" android:pivotY="54" android:rotation="38"
+        android:scaleX="0.8" android:scaleY="0.8">
+        <path android:fillColor="#C98A45" android:pathData="M50,12 L58,12 L57.2,24 L50.8,24 Z" />
+        <path android:fillColor="#F3D9A4" android:pathData="M46,14 L50,14 L50,16 L46,16 Z M46,19 L50,19 L50,21 L46,21 Z M58,14 L62,14 L62,16 L58,16 Z M58,19 L62,19 L62,21 L58,21 Z" />
+        <path android:fillColor="#B97835" android:pathData="M51,24 L57,24 L57.6,58 L50.4,58 Z" />
+        <path android:fillColor="#5A3519" android:pathData="M51,30 L57,30 L57,31 L51,31 Z M51,36 L57,36 L57,37 L51,37 Z M51,41.5 L57.2,41.5 L57.2,42.5 L51,42.5 Z M50.8,46.5 L57.2,46.5 L57.2,47.5 L50.8,47.5 Z M50.6,51 L57.4,51 L57.4,52 L50.6,52 Z" />
+        <path android:fillColor="#E0A458" android:pathData="M54,94 C38,94 32,82 34,70 C36,61 45,56 54,56 C63,56 72,61 74,70 C76,82 70,94 54,94 Z" />
+        <path android:fillColor="#3E2616" android:pathData="M50.5,76 a3.5,3.5 0 1,0 7,0 a3.5,3.5 0 1,0 -7,0 Z" />
+        <path android:fillColor="#FFF3E0" android:pathData="M52.6,16 L53.2,16 L53.4,90 L52.8,90 Z M54.7,16 L55.3,16 L55.5,90 L54.9,90 Z" />
+        <path android:fillColor="#3E2616" android:pathData="M48,86 L60,86 L60,88 L48,88 Z" />
+    </group>
+</vector>
